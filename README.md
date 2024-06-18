@@ -42,20 +42,46 @@ And with that, my journey in the world of open source began.
 
 ![shoutout-sponsors](https://sponsor-spotlight.vercel.app/sponsor?login=ful1e5)
 
+-   **2024-06-14**: [4460d91](https://github.com/ful1e5/Bibata_Cursor/commit/4460d9118dce220d606c38308b93181861b8a85a) Partitioned cursor build configuration into multiple files according to platform:
+    -   `build.toml`
+        -   `configs/normal/x.build.toml`
+        -   `configs/normal/win_xl.build.toml`
+        -   `configs/normal/win_rg.build.toml`
+        -   `configs/normal/win_lg.build.toml`
+    -   `build.right.toml`
+        -   `configs/right/x.build.toml`
+        -   `configs/right/win_xl.build.toml`
+        -   `configs/right/win_rg.build.toml`
+        -   `configs/right/win_lg.build.toml`
+
 ---
 
 ![Bibata Amber](https://github.com/ful1e5/Bibata_Cursor/assets/24286590/d64d75e5-3ac9-45f3-8afe-e92719fd48d1)
 ![Bibata Classic](https://github.com/ful1e5/Bibata_Cursor/assets/24286590/04df0fbe-36fc-47bd-ad0a-c70eaea871f3)
 ![Bibata Ice](https://github.com/ful1e5/Bibata_Cursor/assets/24286590/56e7e67a-cf77-407c-871c-f663a93508f7)
 
+---
+
+![Bibata Amber Right](https://github.com/ful1e5/Bibata_Cursor/assets/24286590/204a036a-796d-4277-85d2-30b7fb2449f2)
+![Bibata Classic Right](https://github.com/ful1e5/Bibata_Cursor/assets/24286590/fb4cac21-e8a8-46e9-9ce2-688f35bbcbaa)
+![Bibata Ice Right](https://github.com/ful1e5/Bibata_Cursor/assets/24286590/c64f45d6-cd8d-46e6-8386-e2f3b7012db7)
+
 ## Variants:
 
--   **Bibata Original Amber:** Yellowish and sharp edge bibata cursors.
--   **Bibata Modern Amber:** Yellowish and rounded edge bibata cursors.
--   **Bibata Original Classic:** Black and sharp edge bibata cursors.
--   **Bibata Modern Classic:** Black and rounded edge bibata cursors.
--   **Bibata Original Ice:** White and sharp edge bibata cursors.
--   **Bibata Modern Ice:** White and rounded edge bibata cursors
+-   Normal
+    -   **Bibata Original Amber:** Yellowish and sharp edge bibata cursors.
+    -   **Bibata Modern Amber:** Yellowish and rounded edge bibata cursors.
+    -   **Bibata Original Classic:** Black and sharp edge bibata cursors.
+    -   **Bibata Modern Classic:** Black and rounded edge bibata cursors.
+    -   **Bibata Original Ice:** White and sharp edge bibata cursors.
+    -   **Bibata Modern Ice:** White and rounded edge bibata cursors.
+-   Right Hand
+    -   **Bibata Original Amber Right:** Yellowish and sharp edge right-hand bibata cursors.
+    -   **Bibata Modern Amber Right:** Yellowish and rounded edge right-hand bibata cursors.
+    -   **Bibata Original Classic Right:** Black and sharp edge right-hand bibata cursors.
+    -   **Bibata Modern Classic Right:** Black and rounded edge right-hand bibata cursors.
+    -   **Bibata Original Ice Right:** White and sharp edge right-hand bibata cursors.
+    -   **Bibata Modern Ice Right:** White and rounded edge right-hand bibata cursors.
 
 ## Cursor Sizes
 
@@ -145,20 +171,20 @@ sudo dnf install bibata-cursor-theme
 
 ## Installing Bibata Cursor
 
-#### Linux/X11
+#### Linux X11/Wayland
 
 **Installation:**
 
 ```bash
 tar -xvf Bibata.tar.gz                # extract `Bibata.tar.gz`
-mv Bibata-* ~/.icons/                 # Install to local users
+mv Bibata-* ~/.local/share/icons/     # Install to local users
 sudo mv Bibata-* /usr/share/icons/    # Install to all users
 ```
 
 **Uninstallation:**
 
 ```bash
-rm ~/.icons/Bibata-*                  # Remove from local users
+rm ~/.local/share/icons/Bibata-*      # Remove from local users
 sudo rm /usr/share/icons/Bibata-*     # Remove from all users
 ```
 

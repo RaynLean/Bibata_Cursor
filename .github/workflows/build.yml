@@ -19,10 +19,10 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
 
@@ -40,7 +40,7 @@ jobs:
         continue-on-error: false
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
 
@@ -53,20 +53,5 @@ jobs:
           clickgen --version
           ctgen --version
 
-      - name: Building `Bibata Modern Amber` Cursors
-        run: ctgen build.toml -n 'Bibata-Modern-Amber' -c 'Yellowish and rounded edge Bibata cursors.' -d 'bitmaps/Bibata-Modern-Amber'
-
-      - name: Building `Bibata Original Amber` Cursors
-        run: ctgen build.toml -n 'Bibata-Original-Amber' -c 'Yellowish and sharp edge Bibata cursors.' -d 'bitmaps/Bibata-Original-Amber'
-
-      - name: Building `Bibata Modern Classic` Cursors
-        run: ctgen build.toml -n 'Bibata-Modern-Classic' -c 'Black and rounded edge Bibata cursors.' -d 'bitmaps/Bibata-Modern-Classic'
-
-      - name: Building `Bibata Original Classic` Cursors
-        run: ctgen build.toml -n 'Bibata-Original-Classic' -c 'Black and sharp edge Bibata cursors.' -d 'bitmaps/Bibata-Original-Classic'
-
-      - name: Building `Bibata Modern Ice` Cursors
-        run: ctgen build.toml -n 'Bibata-Modern-Ice' -c 'White and rounded edge Bibata cursors.' -d 'bitmaps/Bibata-Modern-Ice'
-
-      - name: Building `Bibata Original Ice` Cursors
-        run: ctgen build.toml -n 'Bibata-Original-Ice' -c 'White and sharp edge bibata cursors.' -d 'bitmaps/Bibata-Original-Ice'
+      - name: Building Bibata Cursors
+        run: yarn build

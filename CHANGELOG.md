@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [v2.0.7] - 18 June 2024
+
+### :warning: Changes for Developers/Package Distributors
+
+> **Note**
+> This change applies only to developers and package distributors
+
+-   The `build.toml` and `build.right.toml` files have been removed. Instead, the cursor build configurations are now distributed according to platforms within the `configs` directory:
+    -   `configs/normal/x.build.toml`: Used to build normal XCursor.
+    -   `configs/normal/win_rg.build.toml`: Used to build normal regular size Windows cursors.
+    -   `configs/normal/win_lg.build.toml`: Used to build normal large size Windows cursors.
+    -   `configs/normal/win_xxl.build.toml`: Used to build normal extra large size Windows cursors.
+    -   `configs/right/x.build.toml`: Used to build right XCursor.
+    -   `configs/right/win_rg.build.toml`: Used to build right regular size Windows cursors.
+    -   `configs/right/win_lg.build.toml`: Used to build right large size Windows cursors.
+    -   `configs/right/win_xxl.build.toml`: Used to build right extra large size Windows cursors.
+
+### What's New?
+
+-   Redesign hands cursor for `bibata-*-right` cursors (Related to #112)
+-   Attach version meta-data inside cursor packages
+
+### Issues Fixes
+
+-   Fixes #159
+-   Fixes #158
+-   Fixes #161
+
+## [v2.0.6] - 25 January 2024
+
+### What's New?
+
+-   Right-hand cursors themes added #112
+
 ### Issues Fixes
 
 -   Fixes #158
@@ -316,7 +350,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Initial release 🎊
 
-[unreleased]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.5...main
+[unreleased]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.7...main
+[v2.0.7]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.6...v2.0.7
+[v2.0.6]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.5...v2.0.6
 [v2.0.5]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.4...v2.0.5
 [v2.0.4]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.3...v2.0.4
 [v2.0.3]: https://github.com/ful1e5/Bibata_Cursor/compare/v2.0.2...v2.0.3

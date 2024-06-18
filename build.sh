@@ -1,10 +1,30 @@
 #!/bin/bash
-# A script for preparing binaries of Bibata Cursors, by Abdulkaiz Khatri
+# A script for preparing binaries of Bibata Cursors, created by Abdulkaiz Khatri.
+
+version="v2.0.6"
 
 error() (
   set -o pipefail
   "$@" 2> >(sed $'s,.*,\e[31m&\e[m,' >&2)
 )
+
+get_config_path() {
+  local key="${1}"
+  local cfg_path="configs"
+
+  if [[ $key == *"Right"* ]]; then
+    cfg_path="${cfg_path}/right"
+  else
+    cfg_path="${cfg_path}/normal"
+  fi
+
+  echo $cfg_path
+}
+
+with_version() {
+  local comment="${1}"
+  echo "$comment ($version)."
+}
 
 if ! type -p ctgen >/dev/null; then
   error ctgen
@@ -12,12 +32,18 @@ if ! type -p ctgen >/dev/null; then
 fi
 
 declare -A names
-names["Bibata-Modern-Amber"]="Yellowish and rounded edge Bibata cursors."
-names["Bibata-Modern-Classic"]="Black and rounded edge Bibata cursors."
-names["Bibata-Modern-Ice"]="White and rounded edge Bibata cursors."
-names["Bibata-Original-Amber"]="Yellowish and sharp edge Bibata cursors."
-names["Bibata-Original-Classic"]="Black and sharp edge Bibata cursors."
-names["Bibata-Original-Ice"]="White and sharp edge Bibata cursors."
+names["Bibata-Modern-Amber"]=$(with_version "Yellowish and rounded edge Bibata")
+names["Bibata-Modern-Amber-Right"]=$(with_version "Yellowish and rounded edge right-hand Bibata")
+names["Bibata-Modern-Classic"]=$(with_version "Black and rounded edge Bibata")
+names["Bibata-Modern-Classic-Right"]=$(with_version "Black and rounded edge right-hand Bibata")
+names["Bibata-Modern-Ice"]=$(with_version "White and rounded edge Bibata")
+names["Bibata-Modern-Ice-Right"]=$(with_version "White and rounded edge right-hand Bibata")
+names["Bibata-Original-Amber"]=$(with_version "Yellowish and sharp edge Bibata")
+names["Bibata-Original-Amber-Right"]=$(with_version "Yellowish and sharp edge right-hand Bibata")
+names["Bibata-Original-Classic"]=$(with_version "Black and sharp edge Bibata")
+names["Bibata-Original-Classic-Right"]=$(with_version "Black and sharp edge right-hand Bibata")
+names["Bibata-Original-Ice"]=$(with_version "White and sharp edge Bibata")
+names["Bibata-Original-Ice-Right"]=$(with_version "White and sharp edge right-hand Bibata")
 
 # Cleanup old builds
 rm -rf themes bin
@@ -25,7 +51,9 @@ rm -rf themes bin
 # Building Bibata XCursor binaries
 for key in "${!names[@]}"; do
   comment="${names[$key]}"
-  ctgen build.toml -p x11 -d "bitmaps/$key" -n "$key" -c "$comment" &
+  cfg_path=$(get_config_path "$key")
+
+  ctgen "$cfg_path/x.build.toml" -p x11 -d "bitmaps/$key" -n "$key" -c "$comment XCursors" &
   PID=$!
   wait $PID
 done
@@ -33,10 +61,11 @@ done
 # Building Bibata Windows binaries
 for key in "${!names[@]}"; do
   comment="${names[$key]}"
-  ctgen build.toml -p windows -s 16 -d "bitmaps/$key" -n "$key-Small" -c "$comment" &
-  ctgen build.toml -p windows -s 24 -d "bitmaps/$key" -n "$key-Regular" -c "$comment" &
-  ctgen build.toml -p windows -s 32 -d "bitmaps/$key" -n "$key-Large" -c "$comment" &
-  ctgen build.toml -p windows -s 48 -d "bitmaps/$key" -n "$key-Extra-Large" -c "$comment" &
+  cfg_path=$(get_config_path "$key")
+
+  ctgen "$cfg_path/win_rg.build.toml" -d "bitmaps/$key" -n "$key-Regular" -c "$comment Windows Cursors" &
+  ctgen "$cfg_path/win_lg.build.toml" -d "bitmaps/$key" -n "$key-Large" -c "$comment Windows Cursors" &
+  ctgen "$cfg_path/win_xl.build.toml" -d "bitmaps/$key" -n "$key-Extra-Large" -c "$comment Windows Cursors" &
   PID=$!
   wait $PID
 done
